@@ -10,9 +10,8 @@ public class DemoController {
 
     private Coach myCoach;
 
-    // If you only have one constructor @Autowired is optional
     @Autowired
-    public DemoController(Coach myCoach) {
+    public void setMyCoach(Coach myCoach) {
         this.myCoach = myCoach;
     }
 
