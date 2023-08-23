@@ -13,7 +13,7 @@ public class DemoController {
 
     //The Qualifier Annotation especify the implementation class
     @Autowired
-    public DemoController(@Qualifier("cricketCoach") Coach myCoach) {
+    public DemoController(@Qualifier("especial") Coach myCoach) {
         this.myCoach = myCoach;
     }
 
