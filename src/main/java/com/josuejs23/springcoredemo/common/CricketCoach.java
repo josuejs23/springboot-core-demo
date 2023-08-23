@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 
-@Component
 // The value "prototype" generate a new instance to each injection.
 // The default value is singleton.
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+//@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Component
 public class CricketCoach implements Coach{
 
     public CricketCoach() {
@@ -20,6 +20,17 @@ public class CricketCoach implements Coach{
     @Override
     public String getDailyWorkout() {
         return "Practice cricket for 1hr!!+";
+    }
+
+
+    @PostConstruct
+    public void postConstruct(){
+        System.out.printf("Post construct %s%n", getClass().getSimpleName());
+    }
+
+    @PreDestroy
+    public void postDestroy(){
+        System.out.printf("Predestroy %s%n", getClass().getSimpleName());
     }
 
 }
