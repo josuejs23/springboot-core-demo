@@ -14,6 +14,7 @@ public class DemoController {
     //The Qualifier Annotation especify the implementation class
     @Autowired
     public DemoController(@Qualifier("cricketCoach") Coach myCoach) {
+        System.out.println("I am " + getClass().getSimpleName());
         this.myCoach = myCoach;
     }
 
