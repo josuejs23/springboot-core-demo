@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 
     private Coach myCoach;
+    private Coach anotherCoach;
 
     //The Qualifier Annotation especify the implementation class
     @Autowired
-    public DemoController(@Qualifier("cricketCoach") Coach myCoach) {
-        System.out.println("I am " + getClass().getSimpleName());
+    public DemoController(@Qualifier("cricketCoach") Coach myCoach,
+                          @Qualifier("cricketCoach") Coach anotherCoach) {
         this.myCoach = myCoach;
+        this.anotherCoach = anotherCoach;
+        System.out.printf("myCoach == anotherCoach %b%n", myCoach == anotherCoach);
     }
 
     /*The Qualifier Annotation especify the implementation class
@@ -27,5 +30,10 @@ public class DemoController {
     @GetMapping("/dailyworkout")
     public String getDailyWorkout(){
         return myCoach.getDailyWorkout();
+    }
+
+    @GetMapping("/check")
+    public String check(){
+        return "myCoach == anotherCoach %b".formatted( myCoach == anotherCoach);
     }
 }
